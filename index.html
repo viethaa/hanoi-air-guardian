@@ -66,11 +66,9 @@
   .header::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 50%;
+    bottom: 0; left: 50%;
     transform: translateX(-50%);
-    width: 120px;
-    height: 2px;
+    width: 120px; height: 2px;
     background: linear-gradient(90deg, transparent, var(--accent-teal), transparent);
   }
   .header-label {
@@ -91,13 +89,9 @@
     background-clip: text;
     line-height: 1.2;
   }
-  .header p {
-    color: var(--text-secondary);
-    margin-top: 10px;
-    font-size: 15px;
-  }
+  .header p { color: var(--text-secondary); margin-top: 10px; font-size: 15px; }
 
-  .data-banner-wrap { text-align: center; margin-bottom: 20px; display: none; }
+  .data-banner-wrap { text-align: center; margin-bottom: 14px; display: none; }
   .data-banner {
     display: inline-flex;
     align-items: center;
@@ -107,16 +101,25 @@
     font-size: 12px;
     font-weight: 500;
   }
-  .data-banner.live {
-    background: rgba(62,232,200,0.08);
-    border: 1px solid rgba(62,232,200,0.2);
-    color: var(--accent-teal);
+  .data-banner.live { background: rgba(62,232,200,0.08); border: 1px solid rgba(62,232,200,0.2); color: var(--accent-teal); }
+  .data-banner.simulated { background: rgba(240,216,78,0.08); border: 1px solid rgba(240,216,78,0.2); color: #f0d84e; }
+
+  /* ─── RUSH HOUR ALERT ─── */
+  .rush-alert {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    background: rgba(240,150,78,0.08);
+    border: 1px solid rgba(240,150,78,0.25);
+    border-radius: var(--radius-sm);
+    padding: 11px 18px;
+    font-size: 13px;
+    color: #f0964e;
+    margin-bottom: 16px;
+    font-weight: 500;
   }
-  .data-banner.simulated {
-    background: rgba(240,216,78,0.08);
-    border: 1px solid rgba(240,216,78,0.2);
-    color: #f0d84e;
-  }
+  .rush-alert.show { display: flex; }
+  .rush-alert-icon { font-size: 18px; }
 
   .district-bar {
     display: flex;
@@ -126,13 +129,7 @@
     margin-bottom: 28px;
     flex-wrap: wrap;
   }
-  .district-bar label {
-    font-size: 13px;
-    color: var(--text-secondary);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
+  .district-bar label { font-size: 13px; color: var(--text-secondary); letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
   .district-bar select {
     background: var(--bg-card);
     border: 1px solid var(--border-card);
@@ -184,11 +181,7 @@
     box-shadow: var(--shadow);
     transition: var(--transition);
   }
-  .card:hover {
-    background: var(--bg-card-hover);
-    border-color: rgba(100, 180, 255, 0.14);
-    transform: translateY(-2px);
-  }
+  .card:hover { background: var(--bg-card-hover); border-color: rgba(100,180,255,0.14); transform: translateY(-2px); }
   .card-title {
     font-size: 11px;
     text-transform: uppercase;
@@ -206,6 +199,7 @@
   }
   .full-width { grid-column: 1 / -1; }
 
+  /* ─── AQI CARD ─── */
   .aqi-display { text-align: center; position: relative; overflow: hidden; }
   .aqi-display::before {
     content: '';
@@ -215,17 +209,26 @@
     background: radial-gradient(circle at center, var(--aqi-glow, rgba(62,232,200,0.06)) 0%, transparent 50%);
     pointer-events: none;
   }
-  .aqi-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 86px;
-    font-weight: 800;
-    line-height: 1;
-    margin: 16px 0 8px;
-    position: relative;
-  }
+  .aqi-number { font-family: 'Playfair Display', serif; font-size: 86px; font-weight: 800; line-height: 1; margin: 16px 0 8px; position: relative; }
   .aqi-category { font-size: 18px; font-weight: 600; margin-bottom: 6px; position: relative; }
-  .aqi-sub { font-size: 13px; color: var(--text-secondary); position: relative; }
+  .aqi-sub { font-size: 13px; color: var(--text-secondary); position: relative; margin-bottom: 10px; }
 
+  /* ─── TREND BADGE ─── */
+  .trend-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  .trend-rising  { background: rgba(232,78,78,0.12);  color: #e84e4e; border: 1px solid rgba(232,78,78,0.25); }
+  .trend-falling { background: rgba(62,232,200,0.12); color: var(--accent-teal); border: 1px solid rgba(62,232,200,0.25); }
+  .trend-stable  { background: rgba(240,216,78,0.10); color: #f0d84e; border: 1px solid rgba(240,216,78,0.2); }
+
+  /* ─── SAFE WINDOW CARD ─── */
   .safe-window-card { position: relative; overflow: hidden; }
   .safe-window-card::before {
     content: '';
@@ -235,20 +238,20 @@
     background: radial-gradient(circle, rgba(62,232,200,0.08), transparent 70%);
     pointer-events: none;
   }
-  .safe-time {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--accent-teal);
-    margin: 12px 0 6px;
-  }
+  .safe-time { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--accent-teal); margin: 12px 0 6px; }
   .safe-detail { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
   .safe-detail strong { color: var(--accent-green); }
 
+  /* Safe window sub-tips */
+  .safe-window-tips { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .swt-item { display: flex; align-items: flex-start; gap: 8px; font-size: 12.5px; color: var(--text-muted); }
+  .swt-item span { line-height: 1.5; }
+
   .chart-wrapper { position: relative; height: 300px; }
 
-  .risk-form { display: flex; flex-direction: column; gap: 20px; }
-  .risk-row { display: flex; flex-direction: column; gap: 8px; }
+  /* ─── RISK FORM ─── */
+  .risk-form { display: flex; flex-direction: column; gap: 16px; }
+  .risk-row { display: flex; flex-direction: column; gap: 6px; }
   .risk-row label { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
   .risk-row select, .risk-row input[type="range"] { width: 100%; }
   .risk-row select {
@@ -286,53 +289,155 @@
   }
   .slider-value { font-size: 15px; font-weight: 600; color: var(--accent-blue); }
 
+  /* ─── SAFE DURATION BOX ─── */
+  .safe-duration-box {
+    background: rgba(62,232,200,0.05);
+    border: 1px solid rgba(62,232,200,0.15);
+    border-radius: var(--radius-sm);
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .safe-duration-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .safe-duration-time {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+  .safe-duration-sub { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ─── LUNG LOAD ROW ─── */
+  .lung-load-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(168,78,232,0.06);
+    border: 1px solid rgba(168,78,232,0.15);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+  .lung-load-row .ll-label { color: var(--text-secondary); display: flex; align-items: center; gap: 7px; }
+  .lung-load-row .ll-value { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #a84ee8; }
+  .lung-load-row .ll-unit { font-size: 11px; color: var(--text-muted); margin-left: 2px; }
+
+  /* ─── RISK RESULT ─── */
   .risk-result {
     background: rgba(255,255,255,0.03);
     border: 1px solid var(--border-card);
     border-radius: var(--radius-sm);
-    padding: 20px;
+    padding: 16px;
     text-align: center;
-    margin-top: 4px;
   }
   .risk-score { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 700; line-height: 1.1; }
   .risk-level { font-size: 15px; font-weight: 600; margin-top: 4px; }
-  .risk-advice { font-size: 13px; color: var(--text-secondary); margin-top: 8px; line-height: 1.6; }
 
+  /* ─── MEDICAL TIPS ─── */
+  .tips-section {
+    margin-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 16px;
+  }
+  .tips-section-title {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .tips-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.05);
+  }
+  .tip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  .tip-item:last-child { border-bottom: none; }
+  .tip-icon { font-size: 16px; line-height: 1.45; flex-shrink: 0; }
+  .tip-text { font-size: 13px; line-height: 1.55; }
+  .tip-p1 .tip-text { color: var(--text-primary); }
+  .tip-p2 .tip-text { color: var(--text-secondary); }
+  .tip-p3 .tip-text { color: var(--text-muted); }
+  .tip-tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-right: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .tag-urgent { background: rgba(232,78,78,0.15); color: #e84e4e; }
+  .tag-kit    { background: rgba(62,232,200,0.12); color: var(--accent-teal); }
+  .tag-route  { background: rgba(77,168,255,0.12); color: var(--accent-blue); }
+  .tag-timing { background: rgba(240,216,78,0.12); color: #f0d84e; }
+
+  /* ─── METHODOLOGY ─── */
   .methodology-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .method-item { display: flex; gap: 14px; align-items: flex-start; }
-  .method-icon {
-    width: 36px; height: 36px;
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px; flex-shrink: 0;
-    background: rgba(62,232,200,0.08);
-    border: 1px solid rgba(62,232,200,0.12);
-  }
+  .method-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; background: rgba(62,232,200,0.08); border: 1px solid rgba(62,232,200,0.12); }
   .method-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
   .method-item p { font-size: 12.5px; color: var(--text-secondary); line-height: 1.6; }
 
-  .loading-overlay {
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 60px; gap: 16px;
-  }
-  .spinner {
-    width: 36px; height: 36px;
-    border: 3px solid rgba(62,232,200,0.15);
-    border-top-color: var(--accent-teal);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
+  .loading-overlay { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px; gap: 16px; }
+  .spinner { width: 36px; height: 36px; border: 3px solid rgba(62,232,200,0.15); border-top-color: var(--accent-teal); border-radius: 50%; animation: spin 0.8s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .loading-text { font-size: 13px; color: var(--text-muted); }
 
   .footer {
     text-align: center;
     margin-top: 40px;
-    padding-top: 24px;
+    padding-top: 28px;
     border-top: 1px solid var(--border-card);
-    font-size: 12px;
-    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
   }
+  .footer-copy {
+    font-size: 14px;
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
+  }
+  .footer-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 7px 16px;
+    border: 1px solid var(--border-card);
+    border-radius: 50px;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    letter-spacing: 0.2px;
+  }
+  .footer-github:hover {
+    color: var(--text-primary);
+    border-color: rgba(100,180,255,0.25);
+    background: rgba(100,180,255,0.05);
+  }
+  .footer-github svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
 
   @media (max-width: 768px) {
     .dashboard-grid { grid-template-columns: 1fr; }
@@ -343,10 +448,7 @@
   }
 
   .fade-in { animation: fadeUp 0.5s ease-out both; }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   .delay-1 { animation-delay: 0.08s; }
   .delay-2 { animation-delay: 0.16s; }
   .delay-3 { animation-delay: 0.24s; }
@@ -368,6 +470,12 @@
     <span class="data-banner" id="data-banner"></span>
   </div>
 
+  <!-- Rush Hour Alert -->
+  <div class="rush-alert fade-in" id="rush-alert">
+    <span class="rush-alert-icon">🚦</span>
+    <span id="rush-alert-text">Rush hour detected — roadside PM2.5 can be 2–3× higher than sensor readings. Avoid main roads.</span>
+  </div>
+
   <div class="district-bar fade-in delay-1">
     <label for="district-select">District</label>
     <select id="district-select"></select>
@@ -379,6 +487,7 @@
 
   <div class="dashboard-grid">
 
+    <!-- AQI Card -->
     <div class="card aqi-display fade-in delay-2" id="aqi-card">
       <div class="card-title">Current Air Quality Index</div>
       <div class="loading-overlay" id="aqi-loading">
@@ -389,15 +498,19 @@
         <div class="aqi-number" id="aqi-value">--</div>
         <div class="aqi-category" id="aqi-category">--</div>
         <div class="aqi-sub" id="aqi-district-label">--</div>
+        <div id="aqi-trend-badge" class="trend-badge" style="display:none;"></div>
       </div>
     </div>
 
+    <!-- Safe Window Card -->
     <div class="card safe-window-card fade-in delay-3">
       <div class="card-title">Safest 2-Hour Outdoor Window</div>
       <div class="safe-time" id="safe-time-range">--:-- – --:--</div>
       <div class="safe-detail" id="safe-detail">Scanning hourly data…</div>
+      <div class="safe-window-tips" id="safe-window-tips"></div>
     </div>
 
+    <!-- 24h Chart -->
     <div class="card full-width fade-in delay-4">
       <div class="card-title">24-Hour AQI Timeline — Today</div>
       <div class="chart-wrapper">
@@ -405,59 +518,123 @@
       </div>
     </div>
 
+    <!-- Personalized Exposure Risk -->
     <div class="card fade-in delay-5">
       <div class="card-title">Personalized Exposure Risk</div>
       <div class="risk-form">
+
         <div class="risk-row">
-          <label for="user-type">Profile Type</label>
+          <label for="user-type">Health Profile</label>
           <select id="user-type">
-            <option value="1.0">Student (1.0×)</option>
-            <option value="1.5">Elderly (1.5×)</option>
-            <option value="1.3">Outdoor Worker (1.3×)</option>
-            <option value="1.2">Athlete (1.2×)</option>
+            <option value="student">🎓  Student</option>
+            <option value="child">👦  Child (under 12)</option>
+            <option value="healthy">💪  Healthy Adult</option>
+            <option value="athlete">🏃  Athlete / Runner</option>
+            <option value="worker">👷  Outdoor Worker</option>
+            <option value="pregnant">🤰  Pregnant</option>
+            <option value="elderly">👴  Elderly (65+)</option>
+            <option value="cardiac">❤️  Cardiac Patient</option>
+            <option value="asthma">🫁  Asthma / Respiratory</option>
           </select>
         </div>
+
         <div class="risk-row">
-          <label>Hours Outdoors: <span class="slider-value" id="hours-value">2</span></label>
+          <label for="activity-type">Planned Activity</label>
+          <select id="activity-type">
+            <option value="sitting">🪑  Sitting / Resting</option>
+            <option value="walking" selected>🚶  Walking / Strolling</option>
+            <option value="jogging">🏃  Light Jogging</option>
+            <option value="running">⚡  Running / Cycling</option>
+            <option value="working">⚒️  Heavy Manual Work</option>
+          </select>
+        </div>
+
+        <div class="risk-row">
+          <label>Planned Time Outdoors: <span class="slider-value" id="hours-value">2h</span></label>
           <input type="range" id="hours-outdoor" min="0" max="8" step="0.5" value="2">
         </div>
+
+        <!-- Safe Duration Box -->
+        <div class="safe-duration-box">
+          <div class="safe-duration-label">Safe Time Outside for You</div>
+          <div class="safe-duration-time" id="safe-duration" style="color: var(--accent-teal);">-- min</div>
+          <div class="safe-duration-sub" id="safe-duration-sub">Based on your profile, activity & current AQI</div>
+        </div>
+
+        <!-- Lung Load -->
+        <div class="lung-load-row">
+          <div class="ll-label">🫁 Estimated Lung Load</div>
+          <div>
+            <span class="ll-value" id="lung-load">--</span>
+            <span class="ll-unit">µg PM2.5</span>
+          </div>
+        </div>
+
+        <!-- Risk Score -->
         <div class="risk-result">
           <div class="risk-score" id="risk-score">--</div>
           <div class="risk-level" id="risk-level">--</div>
-          <div class="risk-advice" id="risk-advice"></div>
         </div>
+
+        <!-- Medical Kit Tips -->
+        <div class="tips-section">
+          <div class="tips-section-title">Your Personalized Kit & Tips</div>
+          <div id="medical-tips-list"></div>
+        </div>
+
+        <!-- Recovery Protocol -->
+        <div class="tips-section">
+          <div class="tips-section-title">When You Return Inside</div>
+          <div id="recovery-tips-list"></div>
+        </div>
+
       </div>
     </div>
 
+    <!-- Methodology -->
     <div class="card fade-in delay-5">
-      <div class="card-title">AI Methodology & Logic</div>
+      <div class="card-title">How It Works</div>
       <div class="methodology-grid">
         <div class="method-item">
           <div class="method-icon">📡</div>
           <div>
-            <h4>Real-Time AQI Data</h4>
-            <p>Fetches live European AQI from the Open-Meteo Air Quality API using precise lat/lng per Hanoi district. No API key required, CORS-enabled.</p>
+            <h4>Live AQI Data</h4>
+            <p>Fetches European AQI from Open-Meteo's atmospheric model (CAMS) per district lat/lng. No API key, CORS-enabled. Fallback to Hanoi diurnal simulation.</p>
           </div>
         </div>
         <div class="method-item">
-          <div class="method-icon">📊</div>
+          <div class="method-icon">📈</div>
           <div>
-            <h4>Hourly Time-Series</h4>
-            <p>24-hour chart with past hours at full opacity, future hours faded. Current hour marked with dashed vertical indicator labeled "NOW".</p>
-          </div>
-        </div>
-        <div class="method-item">
-          <div class="method-icon">🧮</div>
-          <div>
-            <h4>Exposure Risk Model</h4>
-            <p>Risk = (AQI/500) × 100 × Sensitivity × (Hours/8). Tiers: Low ≤15, Moderate ≤35, High ≤60, Severe &gt;60.</p>
+            <h4>AQI Trend Detection</h4>
+            <p>Compares the 2-hour rolling average to 2 hours prior. A delta &gt; 8 AQI = Rising ↑. A delta &lt; −8 = Falling ↓. Otherwise Stable. Shown live on the AQI card.</p>
           </div>
         </div>
         <div class="method-item">
           <div class="method-icon">🎯</div>
           <div>
-            <h4>Safe Window Optimization</h4>
-            <p>Sliding-window scans all consecutive 2-hour pairs across the 24h timeline and returns the minimum average AQI window.</p>
+            <h4>Safe Window Algorithm</h4>
+            <p>Sliding 2-hour window scans the 24h forecast. Avoids 7–9 AM and 5–7 PM rush hour windows when AQI is equal. Returns the cleanest window with time context.</p>
+          </div>
+        </div>
+        <div class="method-item">
+          <div class="method-icon">🧮</div>
+          <div>
+            <h4>Safe Minutes Formula</h4>
+            <p>Base safe time per AQI tier (WHO/EPA-derived) × profile sensitivity multiplier ÷ activity breathing rate multiplier. Running intakes 5–10× more air than sitting.</p>
+          </div>
+        </div>
+        <div class="method-item">
+          <div class="method-icon">🫁</div>
+          <div>
+            <h4>Lung Load Index (unique)</h4>
+            <p>PM2.5 (µg/m³) × ventilation rate (L/min) × time (min) × 0.001 × 0.4 deposition fraction. Estimates actual PM2.5 deposited in your lungs for your session.</p>
+          </div>
+        </div>
+        <div class="method-item">
+          <div class="method-icon">🚦</div>
+          <div>
+            <h4>Rush Hour Micro-Alert</h4>
+            <p>Auto-detects 7–9 AM and 5–7 PM. Hanoi roadside measurements average 2–3× higher than station readings during peak traffic. Banner fires automatically.</p>
           </div>
         </div>
       </div>
@@ -466,7 +643,13 @@
   </div>
 
   <footer class="footer">
-    Hanoi Air Guardian · Powered by Open-Meteo Air Quality API · All times ICT (UTC+7)
+    <div class="footer-copy">© 2025 Ha Bach Viet &amp; Kyeong Doun Kim · Powered by Open-Meteo Air Quality API · ICT (UTC+7)</div>
+    <a class="footer-github" href="https://github.com/viethaa/hanoi-air-guardian" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+      </svg>
+      viethaa/hanoi-air-guardian
+    </a>
   </footer>
 </div>
 
@@ -475,28 +658,58 @@
 // DISTRICTS
 // ═══════════════════════════════════════════════
 const DISTRICTS = [
-  { name: "Hoàn Kiếm",     lat: 21.0285, lng: 105.8542 },
-  { name: "Ba Đình",        lat: 21.0340, lng: 105.8194 },
-  { name: "Đống Đa",        lat: 21.0153, lng: 105.8283 },
-  { name: "Hai Bà Trưng",   lat: 21.0064, lng: 105.8600 },
-  { name: "Cầu Giấy",       lat: 21.0360, lng: 105.7880 },
-  { name: "Thanh Xuân",     lat: 20.9935, lng: 105.8100 },
-  { name: "Hoàng Mai",      lat: 20.9760, lng: 105.8580 },
-  { name: "Long Biên",      lat: 21.0470, lng: 105.8890 },
-  { name: "Tây Hồ",         lat: 21.0690, lng: 105.8235 },
-  { name: "Nam Từ Liêm",    lat: 21.0180, lng: 105.7580 },
-  { name: "Bắc Từ Liêm",   lat: 21.0670, lng: 105.7420 },
-  { name: "Hà Đông",        lat: 20.9620, lng: 105.7700 },
+  { name: "Hoàn Kiếm",   lat: 21.0285, lng: 105.8542 },
+  { name: "Ba Đình",      lat: 21.0340, lng: 105.8194 },
+  { name: "Đống Đa",      lat: 21.0153, lng: 105.8283 },
+  { name: "Hai Bà Trưng", lat: 21.0064, lng: 105.8600 },
+  { name: "Cầu Giấy",     lat: 21.0360, lng: 105.7880 },
+  { name: "Thanh Xuân",   lat: 20.9935, lng: 105.8100 },
+  { name: "Hoàng Mai",    lat: 20.9760, lng: 105.8580 },
+  { name: "Long Biên",    lat: 21.0470, lng: 105.8890 },
+  { name: "Tây Hồ",       lat: 21.0690, lng: 105.8235 },
+  { name: "Nam Từ Liêm",  lat: 21.0180, lng: 105.7580 },
+  { name: "Bắc Từ Liêm",  lat: 21.0670, lng: 105.7420 },
+  { name: "Hà Đông",      lat: 20.9620, lng: 105.7700 },
 ];
 
 const AQI_LEVELS = [
-  { max: 50,       label: "Good",                           color: "#3ee8c8", glow: "rgba(62,232,200,0.10)" },
-  { max: 100,      label: "Moderate",                       color: "#f0d84e", glow: "rgba(240,216,78,0.10)" },
-  { max: 150,      label: "Unhealthy for Sensitive Groups",  color: "#f0964e", glow: "rgba(240,150,78,0.10)" },
-  { max: 200,      label: "Unhealthy",                      color: "#e84e4e", glow: "rgba(232,78,78,0.10)"  },
-  { max: 300,      label: "Very Unhealthy",                  color: "#a84ee8", glow: "rgba(168,78,232,0.10)" },
-  { max: Infinity, label: "Hazardous",                      color: "#8b1a1a", glow: "rgba(139,26,26,0.15)" },
+  { max: 50,       label: "Good",                          color: "#3ee8c8", glow: "rgba(62,232,200,0.10)"  },
+  { max: 100,      label: "Moderate",                      color: "#f0d84e", glow: "rgba(240,216,78,0.10)"  },
+  { max: 150,      label: "Unhealthy for Sensitive Groups", color: "#f0964e", glow: "rgba(240,150,78,0.10)"  },
+  { max: 200,      label: "Unhealthy",                     color: "#e84e4e", glow: "rgba(232,78,78,0.10)"   },
+  { max: 300,      label: "Very Unhealthy",                color: "#a84ee8", glow: "rgba(168,78,232,0.10)"  },
+  { max: Infinity, label: "Hazardous",                     color: "#8b1a1a", glow: "rgba(139,26,26,0.15)"   },
 ];
+
+// ═══════════════════════════════════════════════
+// HEALTH PROFILES
+// safeM = safe-time multiplier vs healthy baseline
+// factor = risk score sensitivity multiplier
+// ═══════════════════════════════════════════════
+const PROFILES = {
+  student:  { label: "Student",              safeM: 1.00, factor: 1.0 },
+  child:    { label: "Child (under 12)",     safeM: 0.50, factor: 1.4 },
+  healthy:  { label: "Healthy Adult",        safeM: 1.10, factor: 1.0 },
+  athlete:  { label: "Athlete / Runner",     safeM: 0.55, factor: 1.2 },
+  worker:   { label: "Outdoor Worker",       safeM: 0.70, factor: 1.3 },
+  pregnant: { label: "Pregnant",             safeM: 0.45, factor: 1.6 },
+  elderly:  { label: "Elderly (65+)",        safeM: 0.40, factor: 1.5 },
+  cardiac:  { label: "Cardiac Patient",      safeM: 0.35, factor: 1.7 },
+  asthma:   { label: "Asthma / Respiratory", safeM: 0.25, factor: 1.8 },
+};
+
+// ═══════════════════════════════════════════════
+// ACTIVITY TYPES
+// breathMult: ventilation rate relative to walking baseline
+// ventL: litres/min (used for Lung Load calculation)
+// ═══════════════════════════════════════════════
+const ACTIVITIES = {
+  sitting: { label: "Sitting",       breathMult: 0.4,  ventL: 6  },
+  walking: { label: "Walking",       breathMult: 1.0,  ventL: 15 },
+  jogging: { label: "Jogging",       breathMult: 2.3,  ventL: 35 },
+  running: { label: "Running",       breathMult: 4.0,  ventL: 60 },
+  working: { label: "Heavy Work",    breathMult: 3.0,  ventL: 45 },
+};
 
 let aqiData = [];
 let chartInstance = null;
@@ -504,9 +717,9 @@ let chartInstance = null;
 // ═══════════════════════════════════════════════
 // UTILITIES
 // ═══════════════════════════════════════════════
-const getHanoiNow = () => new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Bangkok" }));
-const getAqiLevel = (v) => AQI_LEVELS.find(l => v <= l.max) || AQI_LEVELS[5];
-const pad = (n) => String(n).padStart(2, '0');
+const getHanoiNow  = () => new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Bangkok" }));
+const getAqiLevel  = (v) => AQI_LEVELS.find(l => v <= l.max) || AQI_LEVELS[5];
+const pad          = (n) => String(n).padStart(2, '0');
 
 // ═══════════════════════════════════════════════
 // INIT DISTRICT SELECTOR
@@ -522,24 +735,38 @@ function initDistrictSelector() {
 }
 
 // ═══════════════════════════════════════════════
-// CLOCK
+// CLOCK + RUSH HOUR DETECTION
 // ═══════════════════════════════════════════════
 function updateClock() {
   const n = getHanoiNow();
-  document.getElementById('current-time-display').textContent = `${pad(n.getHours())}:${pad(n.getMinutes())} ICT`;
+  document.getElementById('current-time-display').textContent =
+    `${pad(n.getHours())}:${pad(n.getMinutes())} ICT`;
+  checkRushHour(n.getHours());
+}
+
+function checkRushHour(h) {
+  const el = document.getElementById('rush-alert');
+  const txt = document.getElementById('rush-alert-text');
+  const isMorning = h >= 7 && h <= 9;
+  const isEvening = h >= 17 && h <= 19;
+  if (isMorning || isEvening) {
+    const period = isMorning ? 'Morning rush (7–9 AM)' : 'Evening rush (5–7 PM)';
+    txt.textContent = `🚦 ${period} — Hanoi roadside PM2.5 runs 2–3× higher than station sensors. Avoid Đường Láng, Nguyễn Trãi, Giải Phóng, and Ring Road 3.`;
+    el.classList.add('show');
+  } else {
+    el.classList.remove('show');
+  }
 }
 
 // ═══════════════════════════════════════════════
-// FETCH LIVE API (with 6s timeout)
+// FETCH LIVE API (6s timeout)
 // ═══════════════════════════════════════════════
 async function fetchLiveAqi(lat, lng) {
   const n = getHanoiNow();
   const d = `${n.getFullYear()}-${pad(n.getMonth()+1)}-${pad(n.getDate())}`;
   const ac = new AbortController();
   const tid = setTimeout(() => ac.abort(), 6000);
-
   const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&hourly=european_aqi,pm2_5,pm10&start_date=${d}&end_date=${d}&timezone=Asia%2FBangkok`;
-
   try {
     const r = await fetch(url, { signal: ac.signal });
     clearTimeout(tid);
@@ -554,21 +781,17 @@ async function fetchLiveAqi(lat, lng) {
 }
 
 // ═══════════════════════════════════════════════
-// SIMULATED AQI — realistic Hanoi diurnal curve
-// Seeded by coordinates so each district differs
+// SIMULATED AQI — Hanoi diurnal curve, seeded per district
 // ═══════════════════════════════════════════════
 function generateSimulatedAqi(lat, lng) {
   const seed = Math.abs(Math.sin(lat * 1000 + lng * 500)) * 10000;
   const base = 70 + (seed % 60);
-
-  // Hanoi typical: high AM rush, dip midday, rise PM rush, settle overnight
   const curve = [
-    1.15, 1.10, 1.05, 1.00, 0.98, 1.05,
-    1.20, 1.35, 1.30, 1.15, 1.00, 0.90,
-    0.82, 0.78, 0.80, 0.85, 0.92, 1.05,
-    1.18, 1.25, 1.22, 1.18, 1.15, 1.12
+    1.15,1.10,1.05,1.00,0.98,1.05,
+    1.20,1.35,1.30,1.15,1.00,0.90,
+    0.82,0.78,0.80,0.85,0.92,1.05,
+    1.18,1.25,1.22,1.18,1.15,1.12
   ];
-
   return curve.map((f, i) => {
     const noise = Math.sin(seed + i * 7.3) * 12;
     return Math.max(10, Math.min(350, Math.round(base * f + noise)));
@@ -576,66 +799,280 @@ function generateSimulatedAqi(lat, lng) {
 }
 
 // ═══════════════════════════════════════════════
-// SHOW DATA SOURCE BANNER
+// BANNER
 // ═══════════════════════════════════════════════
 function showBanner(live) {
   const wrap = document.getElementById('data-banner-wrap');
-  const el = document.getElementById('data-banner');
+  const el   = document.getElementById('data-banner');
   wrap.style.display = 'block';
   if (live) {
     el.className = 'data-banner live';
     el.textContent = '🟢  Live data from Open-Meteo Air Quality API';
   } else {
     el.className = 'data-banner simulated';
-    el.textContent = '⚠  Simulated data — API blocked in this environment. Download & open the HTML file locally for live data.';
+    el.textContent = '⚠  Simulated data — open the HTML file locally for live data.';
   }
 }
 
 // ═══════════════════════════════════════════════
-// ALGORITHMS
+// AQI TREND
+// Compares current hour to 2 hours ago
+// ═══════════════════════════════════════════════
+function getAqiTrend(vals, h) {
+  if (h < 2) return 'stable';
+  const old = (vals[h-2] ?? vals[h]);
+  const now = vals[h];
+  const diff = now - old;
+  if (diff > 8)  return 'rising';
+  if (diff < -8) return 'falling';
+  return 'stable';
+}
+
+// ═══════════════════════════════════════════════
+// SAFE WINDOW ALGORITHM
+// Finds lowest-AQI 2-hour window, deprioritising rush hours
 // ═══════════════════════════════════════════════
 function findSafestWindow(vals) {
-  let bestI = 0, bestAvg = Infinity;
+  const RUSH = new Set([7,8,17,18,19]);
+  let bestI = 0, bestScore = Infinity;
   for (let i = 0; i < vals.length - 1; i++) {
     const a = vals[i], b = vals[i+1];
     if (a == null || b == null) continue;
     const avg = (a + b) / 2;
-    if (avg < bestAvg) { bestAvg = avg; bestI = i; }
+    // penalise rush-hour windows slightly so equally clean windows prefer non-rush
+    const penalty = (RUSH.has(i) || RUSH.has(i+1)) ? 5 : 0;
+    const score = avg + penalty;
+    if (score < bestScore) { bestScore = score; bestI = i; }
   }
-  return { start: bestI, end: bestI + 2, avg: bestAvg };
+  const avg = (vals[bestI] + vals[bestI+1]) / 2;
+  return { start: bestI, end: bestI + 2, avg };
 }
 
-function calcRisk(aqi, factor, hours) {
-  const score = Math.round((aqi / 500) * 100 * factor * (hours / 8) * 10) / 10;
-  const clamped = Math.min(score, 100);
-  let level, color, advice;
-  if (clamped <= 15) {
-    level="Low Risk"; color="#3ee8c8"; advice="Air quality is manageable. Normal outdoor activities are fine.";
-  } else if (clamped <= 35) {
-    level="Moderate Risk"; color="#f0d84e"; advice="Consider reducing prolonged outdoor exertion. Sensitive individuals should take precautions.";
-  } else if (clamped <= 60) {
-    level="High Risk"; color="#f0964e"; advice="Limit outdoor exposure. Use an N95 mask if going outside for extended periods.";
-  } else {
-    level="Severe Risk"; color="#e84e4e"; advice="Avoid outdoor activities. Stay indoors with air purification if possible.";
+// ═══════════════════════════════════════════════
+// SAFE DURATION CALCULATOR
+// Base times are WHO/EPA-derived thresholds for a healthy adult walking
+// ═══════════════════════════════════════════════
+function baseSafeMinutes(aqi) {
+  if (aqi <= 50)  return 480;
+  if (aqi <= 100) return 240 - (aqi - 50) * 2;      // 240 → 140
+  if (aqi <= 150) return 140 - (aqi - 100) * 1.5;   // 140 → 65
+  if (aqi <= 200) return 65  - (aqi - 150) * 0.9;   // 65 → 20
+  if (aqi <= 300) return 20  - (aqi - 200) * 0.15;  // 20 → 5
+  return 5;
+}
+
+function calcSafeMinutes(aqi, profileKey, activityKey) {
+  const base = Math.max(0, baseSafeMinutes(aqi));
+  const p = PROFILES[profileKey];
+  const a = ACTIVITIES[activityKey];
+  return Math.max(0, Math.round(base * p.safeM / a.breathMult));
+}
+
+function formatSafeTime(mins) {
+  if (mins >= 480) return 'All day ✓';
+  if (mins === 0)  return 'Stay indoors';
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  if (h === 0) return `${m} min`;
+  if (m === 0) return `${h} hr`;
+  return `${h} hr ${m} min`;
+}
+
+// ═══════════════════════════════════════════════
+// LUNG LOAD INDEX (unique metric)
+// Estimates µg of PM2.5 deposited in lungs during planned session
+// PM2.5 ≈ AQI × 0.12 µg/m³ (European AQI correlation)
+// Pulmonary deposition fraction ≈ 0.4
+// ═══════════════════════════════════════════════
+function calcLungLoad(aqi, activityKey, hours) {
+  const pm25   = aqi * 0.12;                         // µg/m³
+  const ventL  = ACTIVITIES[activityKey].ventL;       // L/min
+  const mins   = hours * 60;
+  const load   = pm25 * ventL * mins * 0.001 * 0.4;  // 0.001 = L→m³
+  return Math.round(load * 10) / 10;
+}
+
+// ═══════════════════════════════════════════════
+// RISK SCORE
+// ═══════════════════════════════════════════════
+function calcRisk(aqi, profileKey, hours) {
+  const factor = PROFILES[profileKey].factor;
+  const score  = Math.min(100, Math.round((aqi / 500) * 100 * factor * (hours / 8) * 10) / 10);
+  let level, color;
+  if (score <= 15)      { level = "Low Risk";      color = "#3ee8c8"; }
+  else if (score <= 35) { level = "Moderate Risk";  color = "#f0d84e"; }
+  else if (score <= 60) { level = "High Risk";      color = "#f0964e"; }
+  else                  { level = "Severe Risk";    color = "#e84e4e"; }
+  return { score, level, color };
+}
+
+// ═══════════════════════════════════════════════
+// MEDICAL TIPS ENGINE
+// Returns array of {icon, html, priority}
+// priority 1 = urgent (bright), 2 = important, 3 = helpful
+// ═══════════════════════════════════════════════
+function getMedicalTips(aqi, profileKey, curHour) {
+  const tips = [];
+  const isDusty    = aqi > 80;
+  const isMorning  = curHour >= 7  && curHour <= 9;
+  const isEvening  = curHour >= 17 && curHour <= 19;
+  const isHot      = curHour >= 10 && curHour <= 15;
+  const isRush     = isMorning || isEvening;
+  const add = (icon, html, priority) => tips.push({ icon, html, priority });
+
+  // ── Universal ──
+  add('💧', '<span class="tip-tag tag-kit">Kit</span>Carry at least 500 mL water — Hanoi heat + pollution accelerates dehydration faster than either alone.', 1);
+
+  // ── Mask by AQI ──
+  if (aqi > 200) {
+    add('😷', '<span class="tip-tag tag-urgent">Urgent</span>N95/KN95 mask is <strong>essential</strong> and must seal tight. Surgical masks do not filter PM2.5 at this level.', 1);
+  } else if (aqi > 100) {
+    add('😷', '<span class="tip-tag tag-kit">Kit</span>Wear an N95 or KN95 mask — check for a proper face seal. Surgical masks let most PM2.5 through.', 1);
+  } else if (aqi > 50) {
+    add('🧣', '<span class="tip-tag tag-kit">Kit</span>Surgical mask recommended for sensitive individuals. N95 if you are in a high-risk profile.', 2);
   }
-  return { score: clamped, level, color, advice };
+
+  // ── Dusty conditions ──
+  if (isDusty) {
+    add('👓', '<span class="tip-tag tag-kit">Kit</span>Wrap-around glasses or goggles — dust and PM10 particles scratch and inflame the cornea.', 2);
+    add('🤲', 'Avoid touching your face outdoors. Hands collect particles that then enter eyes, nose, and mouth.', 3);
+  }
+
+  // ── Rush hour ──
+  if (isRush) {
+    const period = isMorning ? '7–9 AM' : '5–7 PM';
+    add('🚦', `<span class="tip-tag tag-timing">Timing</span>Peak traffic ${period}: stay off Đường Láng, Nguyễn Trãi, Giải Phóng. Side streets can have 40–60% lower PM2.5.`, 1);
+  }
+
+  // ── Hot midday ──
+  if (isHot) {
+    add('☀️', '<span class="tip-tag tag-timing">Timing</span>Sunlight converts NOx into ozone (O₃), which peaks 11 AM–3 PM. Seek shade — ozone irritates airways at ground level.', 2);
+  }
+
+  // ── Profile-specific ──
+  switch (profileKey) {
+
+    case 'student':
+      add('🎒', 'Avoid running to class or rushing on a motorbike during high-AQI mornings — brief intense effort spikes intake significantly.', 2);
+      add('🏫', 'In class: sit away from windows facing traffic. PM2.5 penetrates through poorly-sealed window gaps.', 3);
+      break;
+
+    case 'child':
+      add('😷', '<span class="tip-tag tag-kit">Kit</span>Use a child-sized KN95 — standard adult masks do not seal on small faces and provide almost no protection.', 1);
+      add('👀', '<span class="tip-tag tag-urgent">Watch for</span>Eye rubbing, persistent cough, or unusual fatigue → bring inside immediately. Children cannot reliably report symptoms.', 1);
+      add('🧃', 'Offer water every 20 minutes even if not thirsty — children dehydrate faster and rarely self-regulate.', 2);
+      add('🌳', '<span class="tip-tag tag-route">Route</span>Keep play in shaded, low-traffic areas. Children breathe more air per kg of body weight than adults.', 2);
+      break;
+
+    case 'healthy':
+      add('🏃', 'You have more buffer than sensitive groups — but strenuous exercise above AQI 100 still raises your lifetime PM2.5 dose meaningfully.', 3);
+      add('🌳', '<span class="tip-tag tag-route">Route</span>Even for healthy adults, routes near Hồ Tây or Hoàn Kiếm Lake average 20–35% lower PM2.5 than main roads.', 3);
+      break;
+
+    case 'athlete':
+      add('🏃', '<span class="tip-tag tag-urgent">Key</span>Reduce intensity by 30–40%. Running hard makes you inhale 5–10× more air than walking — you absorb pollution far faster.', 1);
+      add('🌊', '<span class="tip-tag tag-route">Route</span>Best Hanoi routes: Hồ Tây lakeside (Tây Hồ), Hoàn Kiếm Lake perimeter, Thống Nhất Park, Yên Sở Park. Trees filter PM2.5 naturally.', 1);
+      add('⏰', '<span class="tip-tag tag-timing">Timing</span>Optimal training window: 5:00–6:30 AM (before traffic builds) or after 9:00 PM (traffic subsides, temperatures drop).', 2);
+      add('👃', 'Breathe through your nose during light phases — nasal passages filter and humidify air far better than mouth breathing.', 2);
+      break;
+
+    case 'worker':
+      add('🦺', '<span class="tip-tag tag-urgent">Urgent</span>Request a P100 half-face respirator from your employer on days AQI > 100. N95 is the minimum acceptable — no cloth masks.', 1);
+      add('🏠', 'Take 10-minute sheltered indoor breaks every 45–60 minutes to let your respiratory system clear particles.', 1);
+      add('💧', 'Target 3–4 L of water on hot work days. Physical labour + heat + PM2.5 stress all increase fluid loss.', 2);
+      add('🚿', '<span class="tip-tag tag-kit">Recovery</span>Shower and wash hair after work. PM2.5 settles on hair, skin, and clothing and re-enters your environment indoors.', 2);
+      break;
+
+    case 'pregnant':
+      add('⚠️', '<span class="tip-tag tag-urgent">Critical</span>PM2.5 particles cross the placental barrier and are associated with preterm birth and reduced fetal lung development. Limit all non-essential outdoor time above AQI 100.', 1);
+      add('😷', '<span class="tip-tag tag-kit">Kit</span>N95 masks are safe during pregnancy and strongly recommended. They do not restrict oxygen supply to the baby.', 1);
+      add('🏥', 'Shortness of breath, chest tightness, dizziness, or palpitations outdoors → go inside and call your OB-GYN.', 1);
+      add('🌿', '<span class="tip-tag tag-route">Route</span>Walk in green spaces with tree canopy. Trees act as natural PM2.5 barriers, reducing concentrations by 15–30%.', 2);
+      break;
+
+    case 'elderly':
+      add('💊', '<span class="tip-tag tag-kit">Kit</span>Carry all regular medications and keep emergency contacts (name + number) accessible on your phone or a card.', 1);
+      add('🩺', '<span class="tip-tag tag-urgent">Watch for</span>Chest tightness, shortness of breath, or dizziness → stop, sit down, and call someone to assist you inside.', 1);
+      add('👥', 'Do not go out alone on AQI > 100 days. Go with a companion or inform someone of your route and expected return time.', 1);
+      add('🛣️', 'Stick to familiar, shaded routes only. Haze and reduced visibility increase fall risk — avoid uneven pavements.', 2);
+      add('🪑', 'Rest every 15–20 minutes. Bench-rest in shade between walking segments on high-pollution days.', 2);
+      break;
+
+    case 'cardiac':
+      add('❤️', '<span class="tip-tag tag-urgent">Critical</span>PM2.5 triggers systemic inflammation that can precipitate cardiac events within hours of exposure. Strictly limit time outdoors above AQI 100.', 1);
+      add('💊', '<span class="tip-tag tag-kit">Kit</span>Carry nitroglycerin (or your prescribed emergency cardiac medication) at all times. Never leave home without it on bad air days.', 1);
+      add('⚠️', '<span class="tip-tag tag-urgent">Emergency signs</span>Chest pain, jaw or arm ache, cold sweat, or sudden fatigue outdoors → call 115 immediately. Do not walk home first.', 1);
+      add('📊', 'Check resting heart rate and blood pressure before going out and again when you return. Log any unusual readings.', 2);
+      add('🚶', 'Walking only — no stair climbing, carrying heavy bags, or any effort that raises your heart rate significantly outdoors.', 2);
+      break;
+
+    case 'asthma':
+      add('💨', '<span class="tip-tag tag-kit">Kit</span>Carry your rescue inhaler (salbutamol/Ventolin) within arm\'s reach at all times — not in your bag, on your person.', 1);
+      add('💊', 'Use your preventer/controller inhaler 30 minutes before going outside on days AQI > 50.', 1);
+      add('⚠️', '<span class="tip-tag tag-urgent">Early warning signs</span>Chest tightness, dry cough, or wheezing → go inside immediately, use rescue inhaler, sit upright, and call for help if no improvement in 10 min.', 1);
+      add('🌡️', 'Cold winter air combined with PM2.5 is a dual trigger. Wrap a scarf loosely over your nose and mouth to warm incoming air.', 2);
+      add('🏠', 'Even mild exertion outdoors in polluted air doubles your risk of an acute attack. Prioritise indoor exercise on bad days.', 2);
+      break;
+  }
+
+  return tips.sort((a, b) => a.priority - b.priority);
+}
+
+// ═══════════════════════════════════════════════
+// RECOVERY TIPS (always shown, vary by AQI + profile)
+// ═══════════════════════════════════════════════
+function getRecoveryTips(aqi, profileKey) {
+  const tips = [];
+  const add = (icon, text, p) => tips.push({ icon, html: text, priority: p });
+
+  add('💧', 'Drink 250–500 mL of water as soon as you are inside. Hydration helps your respiratory mucosa flush trapped particles.', 1);
+
+  if (aqi > 80) {
+    add('👃', 'Rinse your nasal passages with isotonic saline spray (nước muối sinh lý) to remove deposited particles. Available at any pharmacy for ~15,000 VND.', 1);
+    add('🚿', 'Shower and wash your hair — PM2.5 settles on hair and skin and re-contaminates your indoor air if not removed.', 2);
+    add('👕', 'Change clothes immediately. Leave outdoor clothes near the door rather than carrying particles into living areas.', 2);
+  }
+
+  if (profileKey === 'asthma' || profileKey === 'cardiac') {
+    add('📊', 'Log how you feel — any unusual breathlessness, chest pressure, or fatigue in the 6 hours after going out can be delayed pollution response. Inform your doctor.', 1);
+  }
+
+  if (profileKey === 'athlete' || profileKey === 'worker') {
+    add('🧴', 'Apply a light moisturiser to exposed skin. PM2.5 carries polycyclic aromatic hydrocarbons (PAHs) that penetrate and inflame skin.', 2);
+  }
+
+  add('🌬️', 'Run your air purifier on high for 30 minutes after opening your door. Bringing outdoor air inside temporarily spikes indoor PM2.5.', 2);
+  add('🍵', 'Warm green tea or ginger tea helps soothe airways. Both have anti-inflammatory compounds that may reduce airway irritation.', 3);
+
+  return tips;
+}
+
+// ═══════════════════════════════════════════════
+// RENDER TIPS LIST
+// ═══════════════════════════════════════════════
+function renderTips(containerId, tips) {
+  const el = document.getElementById(containerId);
+  if (!tips.length) { el.innerHTML = '<div class="tip-item"><span class="tip-text" style="color:var(--text-muted)">No specific tips for current conditions.</span></div>'; return; }
+  el.innerHTML = tips.map(t => `
+    <div class="tip-item tip-p${t.priority}">
+      <span class="tip-icon">${t.icon}</span>
+      <span class="tip-text">${t.html}</span>
+    </div>
+  `).join('');
 }
 
 // ═══════════════════════════════════════════════
 // CHART
 // ═══════════════════════════════════════════════
 function renderChart(vals) {
-  const ctx = document.getElementById('aqi-chart').getContext('2d');
+  const ctx     = document.getElementById('aqi-chart').getContext('2d');
   const curHour = getHanoiNow().getHours();
-  const labels = Array.from({length:24}, (_,i) => `${pad(i)}:00`);
-
+  const labels  = Array.from({length:24}, (_,i) => `${pad(i)}:00`);
   const bgColors = vals.map((v,i) => {
     if (v == null) return 'rgba(90,110,138,0.15)';
     return getAqiLevel(v).color + (i <= curHour ? 'CC' : '44');
   });
-
   if (chartInstance) chartInstance.destroy();
-
   chartInstance = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -645,23 +1082,18 @@ function renderChart(vals) {
         data: vals.map(v => v ?? 0),
         backgroundColor: bgColors,
         borderColor: vals.map(v => v != null ? getAqiLevel(v).color : 'rgba(90,110,138,0.3)'),
-        borderWidth: 1,
-        borderRadius: 4,
-        borderSkipped: false,
+        borderWidth: 1, borderRadius: 4, borderSkipped: false,
       }]
     },
     options: {
-      responsive: true,
-      maintainAspectRatio: false,
+      responsive: true, maintainAspectRatio: false,
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { display: false },
         tooltip: {
           backgroundColor: 'rgba(10,22,40,0.95)',
-          titleColor: '#e8edf5',
-          bodyColor: '#8a9bb8',
-          borderColor: 'rgba(100,180,255,0.15)',
-          borderWidth: 1, cornerRadius: 10, padding: 12,
+          titleColor: '#e8edf5', bodyColor: '#8a9bb8',
+          borderColor: 'rgba(100,180,255,0.15)', borderWidth: 1, cornerRadius: 10, padding: 12,
           callbacks: {
             title: (items) => labels[items[0].dataIndex] + (items[0].dataIndex === curHour ? '  ◀ NOW' : ''),
             label: (item) => ` AQI: ${item.raw}  —  ${getAqiLevel(item.raw).label}`
@@ -695,8 +1127,7 @@ function renderChart(vals) {
         const c = chart.ctx;
         c.save();
         c.strokeStyle = 'rgba(62,232,200,0.5)';
-        c.lineWidth = 2;
-        c.setLineDash([5,4]);
+        c.lineWidth = 2; c.setLineDash([5,4]);
         c.beginPath(); c.moveTo(bar.x, top); c.lineTo(bar.x, bottom); c.stroke();
         c.setLineDash([]);
         c.fillStyle = '#3ee8c8';
@@ -715,36 +1146,101 @@ function renderChart(vals) {
 function updateAqiCard(aqi, name) {
   const lv = getAqiLevel(aqi);
   document.getElementById('aqi-card').style.setProperty('--aqi-glow', lv.glow);
-  const el = (id) => document.getElementById(id);
-  el('aqi-value').textContent = aqi;
-  el('aqi-value').style.color = lv.color;
-  el('aqi-category').textContent = lv.label;
-  el('aqi-category').style.color = lv.color;
-  el('aqi-district-label').textContent = `${name} District · This Hour`;
-  el('aqi-loading').style.display = 'none';
-  el('aqi-content').style.display = 'block';
+  document.getElementById('aqi-value').textContent = aqi;
+  document.getElementById('aqi-value').style.color = lv.color;
+  document.getElementById('aqi-category').textContent = lv.label;
+  document.getElementById('aqi-category').style.color = lv.color;
+  document.getElementById('aqi-district-label').textContent = `${name} District · This Hour`;
+
+  // Trend
+  const h = getHanoiNow().getHours();
+  const trend = getAqiTrend(aqiData, h);
+  const tb = document.getElementById('aqi-trend-badge');
+  const trendConfig = {
+    rising:  { cls: 'trend-rising',  text: '↑ Rising'  },
+    falling: { cls: 'trend-falling', text: '↓ Falling' },
+    stable:  { cls: 'trend-stable',  text: 'Stable'  },
+  };
+  const tc = trendConfig[trend];
+  tb.className = `trend-badge ${tc.cls}`;
+  tb.textContent = tc.text;
+  tb.style.display = 'inline-flex';
+
+  document.getElementById('aqi-loading').style.display = 'none';
+  document.getElementById('aqi-content').style.display = 'block';
 }
 
 function updateSafeWindow(vals, name) {
-  const w = findSafestWindow(vals);
+  const w  = findSafestWindow(vals);
   const lv = getAqiLevel(w.avg);
   document.getElementById('safe-time-range').textContent = `${pad(w.start)}:00 – ${pad(w.end)}:00`;
   document.getElementById('safe-detail').innerHTML =
     `Best outdoor window in <strong>${name}</strong><br>Average AQI: <strong style="color:${lv.color}">${Math.round(w.avg)}</strong> (${lv.label})`;
+
+  // Why this window is good
+  const tips = [];
+  const RUSH = new Set([7,8,17,18,19]);
+  if (!RUSH.has(w.start) && !RUSH.has(w.start+1)) tips.push({ icon: '✅', text: 'Outside rush hours — lower traffic pollution.' });
+  else tips.push({ icon: '⚠️', text: 'Overlaps with a rush hour — consider shifting 1–2 hours.' });
+  if (w.avg <= 50)       tips.push({ icon: '🟢', text: 'Air quality is Good during this window — suitable for all profiles.' });
+  else if (w.avg <= 100) tips.push({ icon: '🟡', text: 'Moderate quality — sensitive groups should still use a mask.' });
+  else                   tips.push({ icon: '🔴', text: 'Even the best window is poor today — limit time and wear N95.' });
+  if (w.start >= 5 && w.start <= 7) tips.push({ icon: '🌅', text: 'Early morning — cooler, lower traffic, lower ozone.' });
+
+  document.getElementById('safe-window-tips').innerHTML =
+    tips.map(t => `<div class="swt-item"><span>${t.icon}</span><span>${t.text}</span></div>`).join('');
 }
 
 function updateRisk() {
-  const h = getHanoiNow().getHours();
-  const aqi = aqiData[h] ?? aqiData[0] ?? 50;
-  const factor = parseFloat(document.getElementById('user-type').value);
-  const hours = parseFloat(document.getElementById('hours-outdoor').value);
-  document.getElementById('hours-value').textContent = hours;
-  const r = calcRisk(aqi, factor, hours);
+  const h           = getHanoiNow().getHours();
+  const aqi         = aqiData[h] ?? aqiData[0] ?? 50;
+  const profileKey  = document.getElementById('user-type').value;
+  const activityKey = document.getElementById('activity-type').value;
+  const hours       = parseFloat(document.getElementById('hours-outdoor').value);
+
+  // Hours label
+  const hLabel = hours === 1 ? '1 hr' : hours < 1 ? `${hours * 60 | 0} min` : `${hours} hr`;
+  document.getElementById('hours-value').textContent = hLabel;
+
+  // Safe duration
+  const safeMins = calcSafeMinutes(aqi, profileKey, activityKey);
+  const safeStr  = formatSafeTime(safeMins);
+  const safeEl   = document.getElementById('safe-duration');
+  const subEl    = document.getElementById('safe-duration-sub');
+  safeEl.textContent = safeStr;
+  if (safeMins === 0) {
+    safeEl.style.color = '#e84e4e';
+    subEl.textContent = 'Current AQI is too high for your profile — stay indoors.';
+  } else if (safeMins >= 480) {
+    safeEl.style.color = '#3ee8c8';
+    subEl.textContent = `All-day safe for your profile (${ACTIVITIES[activityKey].label.toLowerCase()}).`;
+  } else {
+    const planMins = hours * 60;
+    if (planMins > safeMins) {
+      safeEl.style.color = '#f0964e';
+      subEl.textContent = `Your planned ${hLabel} exceeds the safe limit. Consider cutting by ${Math.round(planMins - safeMins)} min.`;
+    } else {
+      safeEl.style.color = '#3ee8c8';
+      subEl.textContent = `Your planned ${hLabel} is within the safe limit. ✓`;
+    }
+  }
+
+  // Lung Load
+  const load = calcLungLoad(aqi, activityKey, hours);
+  const llEl = document.getElementById('lung-load');
+  llEl.textContent = load.toFixed(1);
+  llEl.style.color = load < 5 ? '#3ee8c8' : load < 15 ? '#f0d84e' : '#e84e4e';
+
+  // Risk score
+  const r = calcRisk(aqi, profileKey, hours);
   document.getElementById('risk-score').textContent = r.score.toFixed(1);
   document.getElementById('risk-score').style.color = r.color;
-  document.getElementById('risk-level').textContent = r.level;
-  document.getElementById('risk-level').style.color = r.color;
-  document.getElementById('risk-advice').textContent = r.advice;
+  document.getElementById('risk-level').textContent  = r.level;
+  document.getElementById('risk-level').style.color  = r.color;
+
+  // Tips
+  renderTips('medical-tips-list', getMedicalTips(aqi, profileKey, h));
+  renderTips('recovery-tips-list', getRecoveryTips(aqi, profileKey));
 }
 
 // ═══════════════════════════════════════════════
@@ -752,7 +1248,6 @@ function updateRisk() {
 // ═══════════════════════════════════════════════
 async function fetchAndRender() {
   const district = DISTRICTS[document.getElementById('district-select').value];
-
   document.getElementById('aqi-loading').style.display = 'flex';
   document.getElementById('aqi-content').style.display = 'none';
 
@@ -782,6 +1277,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateClock();
   setInterval(updateClock, 10000);
   document.getElementById('user-type').addEventListener('change', updateRisk);
+  document.getElementById('activity-type').addEventListener('change', updateRisk);
   document.getElementById('hours-outdoor').addEventListener('input', updateRisk);
   fetchAndRender();
 });
