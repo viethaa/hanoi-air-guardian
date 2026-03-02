@@ -1140,9 +1140,7 @@ function renderChart(vals) {
   });
 }
 
-// ═══════════════════════════════════════════════
-// UI UPDATES
-// ═══════════════════════════════════════════════
+
 function updateAqiCard(aqi, name) {
   const lv = getAqiLevel(aqi);
   document.getElementById('aqi-card').style.setProperty('--aqi-glow', lv.glow);
